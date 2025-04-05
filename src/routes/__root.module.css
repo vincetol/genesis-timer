@@ -1,0 +1,9 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.Content {
+  flex-grow: 1;
+}
