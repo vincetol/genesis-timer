@@ -1,0 +1,17 @@
+.Header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Header__Logo {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  text-transform: lowercase;
+  font-size: var(--font-size-l);
+}
+
+.Header__Nav {
+}
