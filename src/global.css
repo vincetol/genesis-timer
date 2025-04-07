@@ -1,0 +1,126 @@
+:root {
+  --color-primary: 229, 229, 229;
+  --color-primary: 15, 14, 18;
+  --color-secondary: 15, 14, 18;
+  --color-secondary: 229, 229, 229;
+  --color-accent: 240, 90, 36;
+  --border-radius-s: 0.3rem;
+  --border-radius-m: 0.5rem;
+  --border-width: 1px;
+  --button-opacity: 0.05;
+  --opacity-full: 0.5;
+
+  --button-border-radius: 100vh;
+
+  --font-family-a: "Haskoy";
+  --font-size-s: 0.85rem;
+  --font-size-m: 1rem;
+  --font-size-l: 1.5rem;
+
+  --spacer-s: 0.25rem;
+  --spacer-m: 0.5rem;
+  --spacer-l: 0.75rem;
+
+  --animation-fast: 0.25s;
+
+  color-scheme: light dark;
+  color: rgb(var(--color-secondary));
+  background-color: rgb(var(--color-primary));
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
+  font-size: clamp(14px, 1.2vw, 24px);
+}
+
+body {
+  margin: 0;
+  min-width: 280px;
+  font-family: var(--font-family-a);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  padding: var(--spacer-m);
+}
+
+#root {
+  text-align: center;
+  display: contents;
+}
+
+* {
+  font-weight: 300;
+}
+
+button {
+  border-radius: var(--button-border-radius);
+  color: var(--color-secondary);
+  border: var(--border-width) solid transparent;
+  padding: 0.35em 1.5em;
+  text-transform: lowercase;
+  font-size: var(--font-size-s);
+  font-family: inherit;
+  background-color: rgba(var(--color-secondary), var(--button-opacity));
+  cursor: pointer;
+  position: relative;
+  transition: border-color var(--animation-fast);
+}
+
+button:hover {
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  background: rgb(var(--color-secondary));
+  height: var(--border-width);
+}
+
+input[type="range"]::-moz-range-track {
+  background: rgb(var(--color-secondary));
+  height: var(--border-width);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: 0.5rem;
+  border-radius: 100vh;
+  background-color: rgb(var(--color-secondary));
+  height: 1rem;
+  width: 1rem;
+}
+
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  border-radius: 100vh;
+  background-color: rgb(var(--color-secondary));
+  height: 1rem;
+  width: 1rem;
+}
