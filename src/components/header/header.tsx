@@ -1,13 +1,15 @@
+import { Link } from "@tanstack/react-router";
 import styles from "./header.module.css";
+import ThemeToggle from "./themeToggle";
 export default function Header() {
   return (
     <header className={styles.Header}>
-      <div className={styles.Header__Logo}>
+      <Link to="/" className={styles.Header__Logo}>
         <span>GENESIS</span>
         <span>TIMER</span>
-      </div>
+      </Link>
       <nav className={styles.Header__Nav}>
-        <button>Theme</button>
+        <ThemeToggle />
         <button>Settings</button>
       </nav>
     </header>

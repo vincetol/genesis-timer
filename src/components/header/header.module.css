@@ -3,6 +3,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding-bottom: var(--spacer-l);
 }
 
 .Header__Logo {
