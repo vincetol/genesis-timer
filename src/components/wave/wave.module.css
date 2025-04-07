@@ -1,0 +1,13 @@
+.Wave {
+  max-width: fit-content;
+}
+
+.Wave.Expanded {
+  background-color: rgba(var(--color-secondary), var(--button-opacity));
+  border-radius: var(--border-radius-m);
+  padding: var(--spacer-m);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-m);
+}

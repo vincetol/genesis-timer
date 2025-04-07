@@ -1,0 +1,6 @@
+.Visual {
+  background-color: rgba(var(--color-secondary), var(--opacity-full));
+  border-radius: var(--border-radius-s);
+  color: rgb(var(--color-primary));
+  min-height: 2.5em;
+}
