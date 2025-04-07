@@ -1,0 +1,17 @@
+.Debug {
+  position: fixed;
+  top: 50%;
+  right: 1rem;
+  transform: translate3d(0, -50%, 0);
+  border-radius: var(--border-radius-m);
+  background-color: rgba(var(--color-secondary), var(--opacity-full));
+  padding: var(--spacer-s);
+}
+
+.Infos {
+  display: none;
+}
+
+.Infos.Open {
+  display: block;
+}
