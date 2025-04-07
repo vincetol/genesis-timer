@@ -1,38 +1,27 @@
-import { RefObject, useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
-// states
-///////////////
-// playing
-// paused
-// break
-// stopped
+export enum TIMER_STATES {
+  running = "running",
+  paused = "paused",
+  break = "break",
+  stopped = "stopped",
+  skipped = "skipped",
+}
 
-// functions
-///////////////
-// play
-// reset
-// stop
-// pause
-// break
-// set Time
-// set break Length
-
-export const TIMER_STATES = {
-  running: "running",
-  paused: "paused",
-  break: "break",
-  stopped: "stopped",
-};
+export enum PHASES {
+  work = "work",
+  break = "break",
+}
 
 export const DEFAULT_SETTINGS = {
   state: TIMER_STATES.stopped,
   running: false,
   min: 1 * 60,
   max: 60 * 60,
-  timer: 1 * 6,
-  timeLeft: 1 * 6,
-  breakLengthShort: 5 * 6,
-  breakLengthLong: 10 * 6,
+  timer: 12 * 60,
+  timeLeft: 12 * 60,
+  breakLengthShort: 5 * 60,
+  breakLengthLong: 10 * 60,
 };
 
 const formatTime = (seconds: number): string => {
@@ -42,11 +31,12 @@ const formatTime = (seconds: number): string => {
 };
 
 export function useTimer() {
-  const [timerState, setTimerState] = useState(DEFAULT_SETTINGS.state);
-  const [isRunning, setisRunning] = useState(DEFAULT_SETTINGS.running);
-  const [timer, setTimer] = useState(DEFAULT_SETTINGS.timer);
-  const [timeLeft, setTimeLeft] = useState(DEFAULT_SETTINGS.timeLeft);
-  const [breakCount, setBreakCount] = useState(0);
+  const [timerState, setTimerState] = useState<string>(DEFAULT_SETTINGS.state);
+  const [phase, setPhase] = useState<string>(PHASES.work);
+  const [isRunning, setisRunning] = useState<boolean>(DEFAULT_SETTINGS.running);
+  const [timer, setTimer] = useState<number>(DEFAULT_SETTINGS.timer);
+  const [timeLeft, setTimeLeft] = useState<number>(DEFAULT_SETTINGS.timeLeft);
+  const [breakCount, setBreakCount] = useState<number>(0);
   const [breakLength, setBreakLength] = useState(
     DEFAULT_SETTINGS.breakLengthShort
   );
@@ -64,23 +54,24 @@ export function useTimer() {
   }, []);
 
   const resetTimer = useCallback(() => {
+    setPhase(PHASES.work);
     setTimerState(TIMER_STATES.stopped);
     setisRunning(false);
     setTimeLeft(timer);
     setBreakCount(0);
   }, [timeLeft]);
 
-  const skipBreak = useCallback(() => {
-    setTimerState(TIMER_STATES.running);
-    setisRunning(true);
-    setTimeLeft(timer);
-  }, []);
-
-  const onTimerEnd = useCallback(() => {
-    setTimerState(TIMER_STATES.break);
-    setisRunning(true);
-    setTimeLeft(breakLength);
-  }, []);
+  const skip = useCallback(() => {
+    if (phase === PHASES.work) {
+      setPhase(PHASES.break);
+      setTimeLeft(breakLength);
+    } else if (phase === PHASES.break) {
+      setPhase(PHASES.work);
+      setTimeLeft(timer);
+    }
+    setTimerState(TIMER_STATES.skipped);
+    setisRunning(false);
+  }, [timerState, phase]);
 
   const clearRef = (ref: React.RefObject<number | null>) => {
     if (ref.current !== null) {
@@ -102,12 +93,14 @@ export function useTimer() {
       setTimeLeft((prevTime) => {
         if (prevTime <= 1) {
           if (timerState === TIMER_STATES.running) {
-            setTimerState(TIMER_STATES.break);
+            setTimerState(TIMER_STATES.paused);
+            setPhase(PHASES.break);
             setisRunning(true);
             setBreakCount((breakCount + 1) % 4);
             return breakCount === 3 ? breakLength * 2 : breakLength;
           } else {
             setTimerState(TIMER_STATES.running);
+            setPhase(PHASES.work);
             setisRunning(true);
             return timer;
           }
@@ -122,15 +115,23 @@ export function useTimer() {
     };
   }, [isRunning, timerState]);
 
-  return {
+  const value = {
     isRunning,
+    phase,
     pauseTimer,
     resetTimer,
-    skipBreak,
+    skip,
     startTimer,
     timerState,
     timeLeft,
     breakCount,
+  };
+
+  return {
+    ...value,
     formattedTime: formatTime(timeLeft),
+    debug: {
+      ...value,
+    },
   };
 }

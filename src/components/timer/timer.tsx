@@ -1,20 +1,29 @@
-import { DEFAULT_SETTINGS, TIMER_STATES, useTimer } from "../../hooks/useTimer";
+import styles from "./timer.module.css";
+import { DEFAULT_SETTINGS, useTimer } from "../../hooks/useTimer";
+import TimerDebug from "./timerDebug";
+import TimerVisual from "./timerVisual";
 
 export default function Timer() {
   const {
     isRunning,
-    breakCount,
+    debug,
     startTimer,
     resetTimer,
     timerState,
-    skipBreak,
+    phase,
+    skip,
     pauseTimer,
     formattedTime,
   } = useTimer();
 
   return (
     <>
-      <section>
+      <section className={styles.Timer}>
+        <TimerVisual
+          phase={phase}
+          isRunning={isRunning}
+          timerState={timerState}
+        />
         <div>
           <h1>{formattedTime}</h1>
           <input
@@ -23,30 +32,25 @@ export default function Timer() {
             max={DEFAULT_SETTINGS.max}
           />
         </div>
-        {!isRunning ? (
-          <button onClick={startTimer} aria-label="Start Timer">
-            Start
-          </button>
-        ) : (
-          <button onClick={pauseTimer} aria-label="Pause Timer">
-            Pause
-          </button>
-        )}
-        {timerState === TIMER_STATES.break ? (
-          <button onClick={skipBreak} aria-label="Skip Break">
+        <nav>
+          {!isRunning ? (
+            <button onClick={startTimer} aria-label="Start Timer">
+              Start
+            </button>
+          ) : (
+            <button onClick={pauseTimer} aria-label="Pause Timer">
+              Pause
+            </button>
+          )}
+          <button onClick={skip} aria-label="Skip Break">
             Skip
           </button>
-        ) : null}
-        {timerState !== TIMER_STATES.running ? (
           <button onClick={resetTimer} aria-label="Reset Timer">
             Reset
           </button>
-        ) : null}
+        </nav>
       </section>
-      <section>
-        <div>state: {timerState}</div>
-        <div>count: {breakCount}</div>
-      </section>
+      <TimerDebug debug={debug} />
     </>
   );
 }
