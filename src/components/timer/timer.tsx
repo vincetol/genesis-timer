@@ -26,7 +26,6 @@ export default function Timer() {
         />
         <div>
           <h1>{formattedTime}</h1>
-          <div>{phase === "break" ? "break" : "work"}</div>
           <input
             type="range"
             min={DEFAULT_SETTINGS.min}

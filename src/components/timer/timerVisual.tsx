@@ -69,6 +69,7 @@ export default function TimerVisual({
         }}
       ></div>
 
+      <div className={styles.Phase}>{phase === "break" ? "break" : "work"}</div>
       <div
         className={`${styles.Break} ${phase === "break" ? styles.Active : ""}`}
       >

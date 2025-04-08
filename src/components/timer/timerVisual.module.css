@@ -43,6 +43,12 @@
   transform: translate3d(-50%, +50%, 0);
 }
 
+.Phase {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
 .Break {
   position: absolute;
   display: flex;
