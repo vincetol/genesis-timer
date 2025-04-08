@@ -45,7 +45,7 @@ export function useWave() {
     };
   }, []);
 
-  const factor = 1;
+  const factor = 2;
 
   // update noise on frequency Change.
   useEffect(() => {
