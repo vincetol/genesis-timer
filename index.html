@@ -1,6 +1,29 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      (function () {
+        try {
+          let tmpTheme = localStorage.getItem("theme");
+
+          if (!tmpTheme) {
+            let prefersDark =
+              window.matchMedia &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+            if (prefersDark) {
+              tmpTheme = "dark";
+            }
+          }
+          const finalTheme = tmpTheme || "light";
+
+          document.documentElement.setAttribute("data-theme", finalTheme);
+        } catch (error) {
+          console.warn("theme could not be applied", error);
+        }
+      })();
+    </script>
+    <link rel="stylesheet" href="./src/init.css" />
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
