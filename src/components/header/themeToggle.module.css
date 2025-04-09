@@ -7,7 +7,9 @@
   text-transform: lowercase;
   font-size: var(--font-size-s);
   font-family: inherit;
-  background-color: rgba(var(--color-secondary), var(--button-opacity));
+  background-color: hsl(
+    from var(--color-secondary) h s l / var(--button-opacity)
+  );
   cursor: pointer;
   position: relative;
   transition: border-color var(--animation-fast);
@@ -29,14 +31,16 @@
   gap: var(--spacer-m);
   padding: var(--spacer-m);
   flex-wrap: wrap;
-  background-color: rgba(var(--color-secondary), var(--button-opacity));
+  background-color: hsl(
+    from var(--color-secondary) h s l / var(--button-opacity)
+  );
   border-radius: var(--border-radius-m);
   overflow: hidden;
 }
 
 .Theme {
-  background-color: rgb(var(--color-primary));
-  color: rgb(var(--color-secondary));
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
   border: unset;
   padding: unset;
   font-family: inherit;
@@ -51,7 +55,7 @@
   justify-content: center;
 }
 .Theme.Active {
-  box-shadow: 0px 0px 0.5rem rgb(var(--color-accent));
+  box-shadow: 0px 0px 0.5rem var(--color-accent);
 }
 
 .Theme:after {
@@ -59,7 +63,7 @@
   width: 30%;
   height: 30%;
   border-radius: var(--button-border-radius);
-  background-color: rgb(var(--color-accent));
+  background-color: var(--color-accent);
   display: block;
   position: absolute;
   transition: all var(--animation-fast) cubic-bezier(0.81, -0.03, 0.23, 0.81);

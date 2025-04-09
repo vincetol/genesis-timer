@@ -1,7 +1,4 @@
 :root {
-  --color-primary: 15, 14, 18;
-  --color-secondary: 229, 229, 229;
-  --color-accent: 240, 90, 36;
   --border-radius-s: 0.3rem;
   --border-radius-m: 0.5rem;
   --border-width: 1px;
@@ -13,7 +10,7 @@
   --font-family-a: "Haskoy";
   --font-size-s: 0.85rem;
   --font-size-m: 1rem;
-  --font-size-l: 1.5rem;
+  --font-size-l: 2.5rem;
 
   --spacer-s: 0.25rem;
   --spacer-m: 0.5rem;
@@ -28,19 +25,19 @@
 }
 
 [data-theme="light"] {
-  --color-primary: 229, 229, 229;
-  --color-secondary: 15, 14, 18;
-  --color-accent: 240, 90, 36;
+  --color-primary: rgb(229, 229, 229);
+  --color-secondary: rgb(15, 14, 18);
+  --color-accent: rgb(240, 90, 36);
 }
 
 [data-theme="dark"] {
-  --color-primary: 15, 14, 18;
-  --color-secondary: 229, 229, 229;
-  --color-accent: 240, 90, 36;
+  --color-primary: rgb(15, 14, 18);
+  --color-secondary: rgb(229, 229, 229);
+  --color-accent: rgb(240, 90, 36);
 }
 
 [data-theme="mono"] {
-  --color-primary: 15, 14, 18;
-  --color-secondary: 229, 229, 229;
-  --color-accent: 229, 229, 229;
+  --color-primary: rgb(15, 14, 18);
+  --color-secondary: rgb(229, 229, 229);
+  --color-accent: rgb(229, 229, 229);
 }

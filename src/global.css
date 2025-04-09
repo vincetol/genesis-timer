@@ -18,8 +18,8 @@ body {
   letter-spacing: -0.02em;
   line-height: 1.1;
   padding: var(--spacer-m);
-  color: rgb(var(--color-secondary));
-  background-color: rgb(var(--color-primary));
+  color: var(--color-secondary);
+  background-color: hsl(from var(--color-primary) h s l);
 }
 
 #root {
@@ -30,6 +30,9 @@ body {
 * {
   font-weight: 300;
 }
+h1 {
+  font-size: var(--font-size-l);
+}
 
 button {
   border-radius: var(--button-border-radius);
@@ -39,7 +42,9 @@ button {
   text-transform: lowercase;
   font-size: var(--font-size-s);
   font-family: inherit;
-  background-color: rgba(var(--color-secondary), var(--button-opacity));
+  background-color: hsl(
+    from var(--color-secondary) h s l / var(--button-opacity)
+  );
   cursor: pointer;
   position: relative;
   transition: border-color var(--animation-fast);
@@ -65,12 +70,12 @@ input[type="range"] {
   cursor: pointer;
 }
 input[type="range"]::-webkit-slider-runnable-track {
-  background: rgb(var(--color-secondary));
+  background: var(--color-secondary);
   height: var(--border-width);
 }
 
 input[type="range"]::-moz-range-track {
-  background: rgb(var(--color-secondary));
+  background: var(--color-secondary);
   height: var(--border-width);
 }
 
@@ -79,16 +84,21 @@ input[type="range"]::-webkit-slider-thumb {
   appearance: none;
   margin-top: 0.5rem;
   border-radius: 100vh;
-  background-color: rgb(var(--color-primary));
-  border: var(--border-width) solid rgb(var(--color-secondary));
+  background-color: var(--color-primary);
+  border: var(--border-width) solid var(--color-secondary);
   height: 1rem;
   width: 1rem;
 }
 
 input[type="range"]::-moz-range-thumb {
-  border: var(--border-width) solid rgb(var(--color-secondary));
+  border: var(--border-width) solid var(--color-secondary);
   border-radius: 100vh;
-  background-color: rgb(var(--color-primary));
+  background-color: var(--color-primary);
   height: 1rem;
   width: 1rem;
+}
+
+hr {
+  border: none;
+  border-top: var(--border-width) dashed var(--color-secondary);
 }

@@ -3,7 +3,9 @@
 }
 
 .Wave.Expanded {
-  background-color: rgba(var(--color-secondary), var(--button-opacity));
+  background-color: hsl(
+    from var(--color-secondary) h s l / var(--button-opacity)
+  );
   border-radius: var(--border-radius-m);
   padding: var(--spacer-m);
 
@@ -13,9 +15,9 @@
 }
 
 .Wave input[type="range"]::-webkit-slider-thumb {
-  background-color: rgb(var(--color-primary));
+  background-color: var(--color-primary);
 }
 
 .Wave input[type="range"]::-moz-range-thumb {
-  background-color: rgb(var(--color-primary));
+  background-color: var(--color-primary);
 }
