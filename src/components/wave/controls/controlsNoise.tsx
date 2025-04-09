@@ -1,9 +1,20 @@
+import { handleCheckbox } from "../../../hooks/useWave/audioHelpers";
+
 export default function NoiseControls({ audio }: { audio: any }) {
-  const { handleVolumeInput, volume } = audio;
+  const { handleNoiseVolumeInput, noiseEnabled, setNoiseEnabled, noiseVolume } =
+    audio;
   return (
     <>
       <div>
-        Noise <input type="checkbox" name="toggleNoise" id="toggleNoise" />
+        <div>Noise</div>
+        <input
+          type="checkbox"
+          name="toggleNoise"
+          id="toggleNoise"
+          checked={noiseEnabled}
+          onChange={() => handleCheckbox(setNoiseEnabled)}
+          value={noiseEnabled}
+        />
       </div>
       <label>
         <input
@@ -11,10 +22,10 @@ export default function NoiseControls({ audio }: { audio: any }) {
           min={0}
           max={1}
           step=".01"
-          value={volume}
-          onChange={handleVolumeInput}
+          value={noiseVolume}
+          onChange={handleNoiseVolumeInput}
         />
-        <div>Vol: {volume}</div>
+        <div>Vol: {noiseVolume}</div>
       </label>
       <div>Type</div>
       <label>
