@@ -62,26 +62,27 @@ export default function TimerVisual({
   return (
     <div className={styles.VisualWrapper}>
       <div
-        className={`${styles.Visual} `}
+        className={`${styles.Visual}`}
         style={{
           transform: `rotate(${rotation}deg)`,
         }}
-      ></div>
-
-      <div className={styles.Phase}>{phase === "break" ? "break" : "work"}</div>
-      <div
-        className={`${styles.Break} ${phase === "break" ? styles.Active : ""}`}
       >
-        <div>B</div>
-      </div>
-      {/* <div
-          className={`${styles.Break} ${timerState === TIMER_STATES.break ? styles.Active : ""}`}
+        <div
+          className={`${styles.Breaki} ${phase === PHASES.break ? styles.Active : ""}`}
         >
           <div></div>
           <div></div>
-          <div></div>
-          <div></div>
-        </div> */}
+        </div>
+      </div>
+
+      <div className={styles.Phase}>
+        {phase === PHASES.break ? PHASES.break : PHASES.work}
+      </div>
+      <div
+        className={`${styles.Break} ${phase === PHASES.break ? styles.Active : ""}`}
+      >
+        <div>B</div>
+      </div>
     </div>
   );
 }
