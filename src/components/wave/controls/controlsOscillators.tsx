@@ -11,7 +11,7 @@ export default function OscillatorControls({ audio }: { audio: any }) {
     maxFrequency,
     minBaseFrequency,
     maxBaseFrequency,
-    volume,
+    oscVolume,
   } = audio || {};
 
   return (
@@ -22,10 +22,10 @@ export default function OscillatorControls({ audio }: { audio: any }) {
           min={0}
           max={1}
           step=".01"
-          value={volume}
+          value={oscVolume}
           onChange={handleVolumeInput}
         />
-        <div>Vol: {volume}</div>
+        <div>Vol: {oscVolume}</div>
       </label>
       <label>
         <input
