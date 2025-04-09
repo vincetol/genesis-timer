@@ -1,28 +1,15 @@
 import styles from "./wave.module.css";
 import { useState } from "react";
-import { useWave } from "../../hooks/useWave";
+import { useWave } from "../../hooks/useWave/useWave";
 import WaveVisual from "./waveVisual";
+import OscillatorControls from "./controls/controlsOscillators";
+import NoiseControls from "./controls/controlsNoise";
 
 export default function Wave() {
   const [expaned, setExpanded] = useState(true);
 
-  const {
-    baseFrequency,
-    frequency,
-    formattedFrequency,
-    formattedBaseFrequency,
-    handleBaseFrequencyInput,
-    handleFrequencyInput,
-    handleVolumeInput,
-    isPlaying,
-    minFrequency,
-    maxFrequency,
-    minBaseFrequency,
-    maxBaseFrequency,
-    startAudio,
-    stopAudio,
-    volume,
-  } = useWave();
+  const audio = useWave();
+  const { frequency, isPlaying, startAudio, stopAudio } = audio;
 
   return (
     <section
@@ -33,39 +20,9 @@ export default function Wave() {
         <div>
           <WaveVisual isPlaying={isPlaying} frequency={frequency} />
         </div>
-        <label>
-          <input
-            type="range"
-            min={0}
-            max={1}
-            step=".01"
-            value={volume}
-            onChange={handleVolumeInput}
-          />
-          <div>Vol: {volume}</div>
-        </label>
-        <label>
-          <input
-            type="range"
-            min={minFrequency}
-            max={maxFrequency}
-            step=".5"
-            value={frequency}
-            onChange={handleFrequencyInput}
-          />
-          <div>Freq: {formattedFrequency} hz</div>
-        </label>
-        <label>
-          <input
-            type="range"
-            min={minBaseFrequency}
-            max={maxBaseFrequency}
-            step=".5"
-            value={baseFrequency}
-            onChange={handleBaseFrequencyInput}
-          />
-          <div>Base: {formattedBaseFrequency} hz</div>
-        </label>
+        <OscillatorControls audio={audio} />
+        <hr />
+        <NoiseControls audio={audio} />
       </nav>
       {!isPlaying ? (
         <button onClick={startAudio}>start</button>
