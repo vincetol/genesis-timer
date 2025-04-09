@@ -18,8 +18,8 @@ export const DEFAULT_SETTINGS = {
   running: false,
   min: 1 * 60,
   max: 60 * 60,
-  timer: 12 * 60,
-  timeLeft: 12 * 60,
+  timer: 25 * 60,
+  timeLeft: 25 * 60,
   breakLengthShort: 5 * 60,
   breakLengthLong: 10 * 60,
 };
