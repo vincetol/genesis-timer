@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./timerVisual.module.css";
-import { TIMER_STATES } from "../../hooks/useTimer";
+import { PHASES, TIMER_STATES } from "../../hooks/useTimer";
 
 export default function TimerVisual({
   isRunning,
@@ -37,11 +37,10 @@ export default function TimerVisual({
           return prevRotation + 6;
         }
 
-        if (
-          timerState === TIMER_STATES.running ||
-          timerState === TIMER_STATES.break
-        ) {
-          return 180 + ((prevRotation + 1) % 180);
+        if (isRunning && phase === PHASES.work) {
+          return 180 + ((prevRotation + 0.5) % 180);
+        } else if (isRunning && phase === PHASES.break) {
+          return 180 + ((prevRotation + 0.125) % 180);
         } else if (timerState === TIMER_STATES.stopped) {
           if (prevRotation - 6 <= 0) {
             return 0;
