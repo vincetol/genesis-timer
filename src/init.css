@@ -8,6 +8,7 @@
   --button-border-radius: 100vh;
 
   --font-family-a: "Haskoy";
+  --font-family-b: "DotGothic16";
   --font-size-s: 0.85rem;
   --font-size-m: 1rem;
   --font-size-l: 2.5rem;
@@ -17,6 +18,8 @@
   --spacer-l: 0.75rem;
 
   --animation-fast: 0.25s;
+
+  --thumb-size: 1.1rem;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

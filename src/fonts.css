@@ -2,3 +2,11 @@
   font-family: "Haskoy";
   src: url("./assets/fonts/Haskoy-variable.woff2");
 }
+
+@font-face {
+  font-family: "DotGothic16";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("./assets/fonts/dotgothic16-latin-400-normal.woff2") format("woff2");
+}
