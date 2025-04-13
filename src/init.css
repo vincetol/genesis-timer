@@ -1,4 +1,8 @@
 :root {
+  --color-black: rgb(15, 14, 18);
+  --color-white: rgb(229, 229, 229);
+  --color-orange: rgb(240, 90, 36);
+
   --border-radius-s: 0.3rem;
   --border-radius-m: 0.5rem;
   --border-width: 1px;
@@ -9,6 +13,7 @@
 
   --font-family-a: "Haskoy";
   --font-family-b: "DotGothic16";
+  --font-size-xs: 0.65rem;
   --font-size-s: 0.85rem;
   --font-size-m: 1rem;
   --font-size-l: 2.5rem;
@@ -19,7 +24,8 @@
 
   --animation-fast: 0.25s;
 
-  --thumb-size: 1.1rem;
+  --checkbox-size: 1rem;
+  --thumb-size: 0.75rem;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,19 +34,19 @@
 }
 
 [data-theme="light"] {
-  --color-primary: rgb(229, 229, 229);
-  --color-secondary: rgb(15, 14, 18);
-  --color-accent: rgb(240, 90, 36);
+  --color-primary: var(--color-white);
+  --color-secondary: var(--color-black);
+  --color-accent: var(--color-orange);
 }
 
 [data-theme="dark"] {
-  --color-primary: rgb(15, 14, 18);
-  --color-secondary: rgb(229, 229, 229);
-  --color-accent: rgb(240, 90, 36);
+  --color-primary: var(--color-black);
+  --color-secondary: var(--color-white);
+  --color-accent: var(--color-orange);
 }
 
 [data-theme="mono"] {
-  --color-primary: rgb(15, 14, 18);
-  --color-secondary: rgb(229, 229, 229);
-  --color-accent: rgb(229, 229, 229);
+  --color-primary: var(--color-black);
+  --color-secondary: var(--color-white);
+  --color-accent: var(--color-white);
 }

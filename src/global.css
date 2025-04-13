@@ -125,8 +125,8 @@ label:has(> input[type="checkbox"])::after,
 label:has(> input[type="radio"])::before {
   content: "";
   display: inline-block;
-  height: var(--thumb-size);
-  width: var(--thumb-size);
+  height: var(--checkbox-size);
+  width: var(--checkbox-size);
   border-radius: var(--button-border-radius);
   background-color: var(--color-primary);
   border: var(--border-width) solid var(--color-secondary);
