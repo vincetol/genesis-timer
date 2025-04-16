@@ -1,0 +1,68 @@
+import styles from "./iconCompressor.module.css";
+export default function IconCompressor() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+      <path
+        className={styles.cls3}
+        vectorEffect="non-scaling-stroke"
+        d="M5.1,8.84c-.64,1.44-1.28,3.15-2.05,4.95"
+      />
+      <g>
+        <path
+          vectorEffect="non-scaling-stroke"
+          className={styles.cls4}
+          d="M13,8.84c-.03-.08-.07-.15-.1-.23"
+        />
+        <path
+          className={styles.cls2}
+          vectorEffect="non-scaling-stroke"
+          d="M12.46,7.7c-.94-1.85-1.96-3.03-3.41-3.03-1.57,0-2.63,1.38-3.64,3.48"
+        />
+        <path className={styles.cls4} d="M5.2,8.61c-.03.08-.07.15-.1.23" />
+      </g>
+      <path
+        vectorEffect="non-scaling-stroke"
+        className={styles.cls3}
+        d="M17.1,18.74c-.64-1.44-1.28-3.15-2.05-4.95s-1.4-3.51-2.05-4.95"
+      />
+      <g>
+        <path
+          vectorEffect="non-scaling-stroke"
+          className={styles.cls4}
+          d="M25,18.74c-.03.08-.07.15-.1.23"
+        />
+        <path
+          vectorEffect="non-scaling-stroke"
+          className={styles.cls1}
+          d="M24.46,19.88c-.94,1.85-1.96,3.03-3.41,3.03-1.57,0-2.63-1.38-3.64-3.48"
+        />
+        <path
+          vectorEffect="non-scaling-stroke"
+          className={styles.cls4}
+          d="M17.2,18.97c-.03-.08-.07-.15-.1-.23"
+        />
+      </g>
+      <path
+        vectorEffect="non-scaling-stroke"
+        className={styles.cls3}
+        d="M27.05,13.79c-.76,1.8-1.4,3.51-2.05,4.95"
+      />
+      <line
+        vectorEffect="non-scaling-stroke"
+        className={styles.cls3}
+        x1="3.05"
+        y1="8.64"
+        x2="27.05"
+        y2="8.64"
+      />
+      <line
+        vectorEffect="non-scaling-stroke"
+        className={styles.cls3}
+        x1="3.05"
+        y1="18.94"
+        x2="27.05"
+        y2="18.94"
+      />
+    </svg>
+  );
+}

@@ -1,0 +1,14 @@
+.cls1 {
+  fill: none;
+}
+
+.cls1,
+.cls2 {
+  stroke: var(--color-secondary);
+  stroke-miterlimit: 10;
+  stroke-width: var(--border-width);
+}
+
+.cls2 {
+  fill: var(--color-primary);
+}

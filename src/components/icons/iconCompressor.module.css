@@ -1,0 +1,26 @@
+.cls1 {
+  stroke-dasharray: 0.51 1.01;
+}
+
+.cls1,
+.cls2,
+.cls3,
+.cls4 {
+  fill: none;
+  stroke: var(--color-secondary);
+  stroke-miterlimit: 10;
+}
+
+.cls1,
+.cls2,
+.cls4 {
+  stroke-width: calc(var(--border-width));
+}
+
+.cls2 {
+  stroke-dasharray: 0.51 1.01;
+}
+
+.cls3 {
+  stroke-width: var(--border-width);
+}

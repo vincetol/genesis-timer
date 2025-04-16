@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: .99px;
+      }
+    </style>
+  </defs>
+  <line class="cls-1" x1="1.05" y1="15.05" x2="29.05" y2="15.05"/>
+</svg>
