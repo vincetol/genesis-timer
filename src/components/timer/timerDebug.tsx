@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styles from "./timerDebug.module.css";
-export default function TimerDebug({ debug }: { debug: any }) {
+import { useTimerStore } from "../../stores/timerStore";
+export default function TimerDebug() {
+  const debug = useTimerStore((state) => state);
   const [isOpen, setIsOpen] = useState(true);
 
   const handleOpen = () => {

@@ -4,8 +4,10 @@
   right: 1rem;
   transform: translate3d(0, -50%, 0);
   border-radius: var(--border-radius-m);
-  background-color: hsl(
-    from var(--color-secondary) h s l / var(--opacity-full)
+  background-color: color-mix(
+    in srgb,
+    var(--color-primary) 100%,
+    var(--color-secondary) 10%
   );
   padding: var(--spacer-s);
 }

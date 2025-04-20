@@ -1,25 +1,26 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import styles from "./timerVisual.module.css";
-import { PHASES, TIMER_STATES } from "../../hooks/useTimer";
+import { PHASES, TIMER_STATES } from "../../hooks/useTimer/timerConsts";
+import { useTimerStore } from "../../stores/timerStore";
 
-export default function TimerVisual({
-  isRunning,
-  phase,
-  timerState,
-}: {
-  isRunning: boolean;
-  phase: string;
-  timerState: string;
-}) {
+export default function TimerVisual({}: {}) {
+  const isRunning = useTimerStore((state) => state.isRunning);
+  const timeLeft = useTimerStore((state) => state.timeLeft);
+  const timerState = useTimerStore((state) => state.timerState);
+  const currentPhase = useTimerStore((state) => state.currentPhase);
+
   const [rotation, setRotation] = useState(0);
   const intervalRef = useRef<number | null>(null);
 
-  const clearRef = (ref: React.RefObject<number | null>) => {
-    if (ref.current !== null) {
-      clearInterval(ref.current);
-      ref.current = null;
-    }
-  };
+  const clearRef = useCallback(
+    (ref: React.RefObject<number | null>) => {
+      if (ref.current !== null) {
+        clearInterval(ref.current);
+        ref.current = null;
+      }
+    },
+    [intervalRef]
+  );
 
   useEffect(() => {
     if (!isRunning && (rotation <= 0 || timerState === TIMER_STATES.paused)) {
@@ -29,6 +30,9 @@ export default function TimerVisual({
 
     intervalRef.current = setInterval(() => {
       setRotation((prevRotation) => {
+        if (timeLeft === 0) {
+          return 0;
+        }
         if (timerState === TIMER_STATES.skipped) {
           if (prevRotation + 6 >= 360) {
             clearRef(intervalRef);
@@ -37,9 +41,9 @@ export default function TimerVisual({
           return prevRotation + 6;
         }
 
-        if (isRunning && phase === PHASES.work) {
+        if (isRunning && currentPhase === PHASES.work) {
           return 180 + ((prevRotation + 0.5) % 180);
-        } else if (isRunning && phase === PHASES.break) {
+        } else if (isRunning && currentPhase === PHASES.break) {
           return 180 + ((prevRotation + 0.125) % 180);
         } else if (timerState === TIMER_STATES.stopped) {
           if (prevRotation - 6 <= 0) {
@@ -68,7 +72,7 @@ export default function TimerVisual({
         }}
       >
         <div
-          className={`${styles.Breaki} ${phase === PHASES.break ? styles.Active : ""}`}
+          className={`${styles.Breaki} ${currentPhase === PHASES.break ? styles.Active : ""}`}
         >
           <div></div>
           <div></div>
@@ -76,12 +80,10 @@ export default function TimerVisual({
       </div>
 
       <div className={styles.Phase}>
-        {phase === PHASES.break ? PHASES.break : PHASES.work}
+        {currentPhase === PHASES.break ? PHASES.break : PHASES.work}
       </div>
-      <div
-        className={`${styles.Break} ${phase === PHASES.break ? styles.Active : ""}`}
-      >
-        <div>B</div>
+      <div className={`${styles.Break} ${styles.Active}`}>
+        {currentPhase === PHASES.break ? <div>B</div> : <div>W</div>}
       </div>
     </div>
   );

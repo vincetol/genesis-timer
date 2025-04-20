@@ -1,0 +1,64 @@
+.SettingsContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100dvh;
+  width: 30dvw;
+  min-width: 280px;
+  max-width: 460px;
+  background-color: color-mix(
+    in srgb,
+    var(--color-primary) 100%,
+    var(--color-secondary) 5%
+  );
+  border-radius: var(--border-radius-l);
+  padding: var(--spacer-l);
+  transform: translateX(100%);
+  transition: transform var(--animation-fast) cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  z-index: var(--layer-overlay);
+  pointer-events: none;
+  overflow-y: scroll;
+}
+
+.SettingsContainer.IsOpen {
+  transform: translateX(0%);
+  pointer-events: all;
+}
+
+.SettingsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-l);
+  min-height: 100%;
+}
+
+.SettingsWrapper > header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: var(--spacer-l);
+}
+
+.Settings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-l);
+  flex-grow: 1;
+}
+
+.Settings span {
+  font-family: var(--font-family-b);
+  font-size: 0.85rem;
+}
+
+.Slider {
+  display: grid;
+  grid-template-columns: 1fr 8fr 1fr;
+  gap: var(--spacer-s);
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100%;
+}

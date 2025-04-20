@@ -1,56 +1,45 @@
 import styles from "./timer.module.css";
-import { DEFAULT_SETTINGS, useTimer } from "../../hooks/useTimer";
-import TimerDebug from "./timerDebug";
+import { useTimer } from "../../hooks/useTimer/useTimer";
 import TimerVisual from "./timerVisual";
+import TimerDisplay from "./timerDisplay/timerDisplay";
+import { useState } from "react";
+import TimerSettings from "./timerSettings";
+import { useTimerStore } from "../../stores/timerStore";
+import TimerDebug from "./timerDebug";
 
 export default function Timer() {
-  const {
-    isRunning,
-    debug,
-    startTimer,
-    resetTimer,
-    timerState,
-    phase,
-    skip,
-    pauseTimer,
-    formattedTime,
-  } = useTimer();
+  const isRunning = useTimerStore((state) => state.isRunning);
+  const handleStart = useTimerStore((state) => state.handleStart);
+  const handlePause = useTimerStore((state) => state.handlePause);
+  const handleSkip = useTimerStore((state) => state.handleSkip);
+  const handleReset = useTimerStore((state) => state.handleReset);
+  useTimer();
 
   return (
     <>
       <section className={styles.Timer}>
-        <TimerVisual
-          phase={phase}
-          isRunning={isRunning}
-          timerState={timerState}
-        />
-        <div>
-          <h1>{formattedTime}</h1>
-          <input
-            type="range"
-            min={DEFAULT_SETTINGS.min}
-            max={DEFAULT_SETTINGS.max}
-          />
-        </div>
+        <TimerVisual />
+        <TimerDisplay />
         <nav>
           {!isRunning ? (
-            <button onClick={startTimer} aria-label="Start Timer">
+            <button onClick={handleStart} aria-label="Start Timer">
               Start
             </button>
           ) : (
-            <button onClick={pauseTimer} aria-label="Pause Timer">
+            <button onClick={handlePause} aria-label="Pause Timer">
               Pause
             </button>
           )}
-          <button onClick={skip} aria-label="Skip Break">
+          <button onClick={handleSkip} aria-label="Skip Break">
             Skip
           </button>
-          <button onClick={resetTimer} aria-label="Reset Timer">
+          <button onClick={handleReset} aria-label="Reset Timer">
             Reset
           </button>
         </nav>
       </section>
-      <TimerDebug debug={debug} />
+      <TimerSettings />
+      <TimerDebug />
     </>
   );
 }
