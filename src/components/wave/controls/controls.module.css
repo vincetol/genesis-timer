@@ -1,0 +1,57 @@
+.Controls {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.Controls.IsOpen {
+  visibility: visible;
+  opacity: 1;
+}
+
+.Controls,
+.ControlsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-s);
+}
+.ControlsWrapper {
+  padding: var(--spacer-s);
+  background-color: hsl(from var(--color-secondary) h s l/.075);
+  border-radius: var(--border-radius-m);
+}
+
+.ControlsWrapper label {
+  font-size: var(--font-size-xs);
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: var(--spacer-s);
+}
+
+.Header label {
+  font-size: var(--font-size-m);
+}
+
+.Header svg {
+  height: 1rem;
+  width: 1rem;
+}
+
+.InputRadioWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--spacer-m);
+}
+
+.InputRadioWrapper label:has(> input[type="radio"]) {
+  display: flex;
+  gap: var(--spacer-s);
+  align-items: center;
+  justify-content: center;
+}

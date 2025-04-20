@@ -1,3 +1,7 @@
+import { handleToggle } from "../../../utils/utils";
+import IconOscillator from "../../icons/iconOscillator";
+import styles from "./controls.module.css";
+
 export default function OscillatorControls({ audio }: { audio: any }) {
   const {
     baseFrequency,
@@ -12,21 +16,26 @@ export default function OscillatorControls({ audio }: { audio: any }) {
     minBaseFrequency,
     maxBaseFrequency,
     oscVolume,
+    oscEnabled,
+    setOscEnabled,
   } = audio || {};
 
   return (
     <>
-      <label>
-        <input
-          type="range"
-          min={0}
-          max={1}
-          step=".01"
-          value={oscVolume}
-          onChange={handleVolumeInput}
-        />
-        <div>Vol: {oscVolume}</div>
-      </label>
+      <div className={styles.Header}>
+        <IconOscillator />
+        <label className={styles.Header}>
+          <div>Oscillator</div>
+          <input
+            type="checkbox"
+            name="toggleNoise"
+            id="toggleNoise"
+            checked={oscEnabled}
+            onChange={() => handleToggle(setOscEnabled)}
+            value={oscEnabled}
+          />
+        </label>
+      </div>
       <label>
         <input
           type="range"
@@ -48,6 +57,17 @@ export default function OscillatorControls({ audio }: { audio: any }) {
           onChange={handleBaseFrequencyInput}
         />
         <div>Base: {formattedBaseFrequency} hz</div>
+      </label>
+      <label>
+        <input
+          type="range"
+          min={0}
+          max={1}
+          step=".01"
+          value={oscVolume}
+          onChange={handleVolumeInput}
+        />
+        <div>Vol: {oscVolume}</div>
       </label>
     </>
   );

@@ -1,17 +1,23 @@
 .Wave {
   max-width: fit-content;
-}
-
-.Wave.Expanded {
-  background-color: hsl(
-    from var(--color-secondary) h s l / var(--button-opacity)
+  overflow: hidden;
+  background-color: color-mix(
+    in srgb,
+    var(--color-primary) 100%,
+    var(--color-secondary) 5%
   );
   border-radius: var(--border-radius-m);
   padding: var(--spacer-m);
+  display: grid;
+  grid-template-rows: auto 0fr;
+}
 
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacer-m);
+.Wave.Expanded {
+  grid-template-rows: auto 1fr;
+  gap: var(--spacer-s);
+}
+.Wave > * {
+  min-height: 0;
 }
 
 .Wave input[type="range"]::-webkit-slider-thumb {
