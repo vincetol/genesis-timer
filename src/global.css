@@ -8,7 +8,7 @@ html,
 body {
   height: 100%;
   min-height: 100%;
-  font-size: clamp(14px, 1.2vw, 24px);
+  font-size: clamp(14px, calc(14px + 0.25vw), 20px);
 }
 
 body {
@@ -121,12 +121,19 @@ label:hover {
   cursor: pointer;
 }
 
+label:has(> input[type="checkbox"])::after {
+  height: var(--checkbox-size);
+  width: var(--checkbox-size);
+}
+label:has(> input[type="radio"])::before {
+  height: var(--thumb-size);
+  width: var(--thumb-size);
+}
+
 label:has(> input[type="checkbox"])::after,
 label:has(> input[type="radio"])::before {
   content: "";
   display: inline-block;
-  height: var(--checkbox-size);
-  width: var(--checkbox-size);
   border-radius: var(--button-border-radius);
   background-color: var(--color-primary);
   border: var(--border-width) solid var(--color-secondary);

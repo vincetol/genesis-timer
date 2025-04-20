@@ -5,6 +5,7 @@
 
   --border-radius-s: 0.3rem;
   --border-radius-m: 0.5rem;
+  --border-radius-l: 1rem;
   --border-width: 1px;
   --button-opacity: 0.05;
   --opacity-full: 0.5;
@@ -26,6 +27,8 @@
 
   --checkbox-size: 1rem;
   --thumb-size: 0.75rem;
+
+  --layer-overlay: 3;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
